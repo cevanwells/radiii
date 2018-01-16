@@ -1,0 +1,25 @@
+server iii_radius {
+	
+listen {
+	type = auth
+	ipaddr = *
+	port = 0
+	proto = udp
+}
+
+authorize {
+	preprocess
+	perl
+	if (ok || updated) {
+		update control {
+			Auth-Type := Perl
+		}
+	}
+}
+
+authenticate {
+	Auth-Type Perl {
+		perl
+	}
+}
+}
