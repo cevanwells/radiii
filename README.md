@@ -1,103 +1,68 @@
 # RADIII
 
-A small FreeRADIUS perl module that allows patron auth against the III Sierra PatronAPI.
+A small FreeRADIUS Perl script that allows patron auth against the III Sierra PatronAPI.
 
 ## Installing / Getting started
 
-A quick introduction of the minimal setup you need to get a hello world up &
-running.
+This module depends on the following Perl modules:
+
+* DateTime
+* LWP (The World-Wide Web library for Perl)
+
+And the following software:
+
+* Perl (5) (this is probabaly included in the base install of most distros)
+* FreeRADIUS
+* FreeRADIUS Perl module
+
+They should be available in the package repository of your distribution and installed very easily by doing something like this:
+
+**Debian/Ubuntu**
 
 ```shell
-packagemanager install awesome-project
-awesome-project start
-awesome-project "Do something!"  # prints "Nah."
+$ sudo apt-get update
+$ sudo apt-get install libdatetime-perl libwww-perl freeradius
 ```
 
-Here you should say what actually happens when you execute the code above.
-
-## Developing
-
-Here's a brief intro about what a developer must do in order to start developing
-the project further:
+**RHEL/CentOS**
 
 ```shell
-git clone https://github.com/your/awesome-project.git
-cd awesome-project/
-packagemanager install
+$ sudo yum install perl-DateTime perl-libwww-perl freeradius freeradius-perl
 ```
 
-And state what happens step-by-step.
-
-### Building
-
-If your project needs some additional steps for the developer to build the
-project after some code changes, state them here:
-
-```shell
-./configure
-make
-make install
-```
-
-Here again you should state what actually happens when the code above gets
-executed.
+Once installed, FreeRADIUS will need to be configured appropriately. Some basic examples might be given at a future time, otherwise look over the FreeRADIUS documentation.
 
 ### Deploying / Publishing
 
-In case there's some step you have to take that publishes this project to a
-server, this is the right time to state it.
-
-```shell
-packagemanager deploy awesome-project -s server.com -u username -p password
-```
-
-And again you'd need to tell what the previous code actually does.
+A Docker image is currently underdevelopment and when finished the Dockerfile will be included in this repository
 
 ## Features
 
-What's all the bells and whistles this project can perform?
-* What's the main functionality
-* You can also do another thing
-* If you get really randy, you can even do this
+* Allows a FreeRADIUS server to authenticate and authorize patrons based on their accounts in the Sierra database
+* Disallows access if a patron account is expired, manually blocked, or with fines over a configurable threshold
 
 ## Configuration
 
-Here you should write what are all of the configurations a user can enter when
-using the project.
+At the moment, there are only 3 Environment variabled that need to be set for configuration of this script. This is only an example, and you should replace the given values with values that represent your environment. 
 
-#### Argument 1
-Type: `String`  
-Default: `'default value'`
+Additionally, you will need these environment variables to be reset after a boot. This can usually be done by editing ```/etc/profile``` or by adding a file to ```/etc/profile.d/```
 
-State what an argument does and how you can use it. If needed, you can provide
-an example below.
+```shell
+# What is your timezone?
+$ export RADIII_TIMEZONE=America/Detroit
 
-Example:
-```bash
-awesome-project "Some other value"  # Prints "You're nailing this readme!"
+# What is the base URL for your III Sierra server?
+$ export RADIII_BASEURL=http://sierra-app.example.org:4500
+
+# What is the maximum fine allowed for patrons to use services?
+$ export RADIII_MAX_FINE=3.99
 ```
-
-#### Argument 2
-Type: `Number|Boolean`  
-Default: 100
-
-Copy-paste as many of these as you need.
-
 ## Contributing
 
-When you publish something open source, one of the greatest motivations is that
-anyone can just jump in and start contributing to your project.
+If you'd like to contribute, please fork the repository and use a feature
+branch. Pull requests are warmly welcome.
 
-These paragraphs are meant to welcome those kind souls to feel that they are
-needed. You should state something like:
-
-"If you'd like to contribute, please fork the repository and use a feature
-branch. Pull requests are warmly welcome."
-
-If there's anything else the developer needs to know (e.g. the code style
-guide), you should link it here. If there's a lot of things to take into
-consideration, it is common to separate this section to its own file called
-`CONTRIBUTING.md` (or similar). If so, you should say that it exists here.
+This isn't a complicated script, so just please try and keep things neat.
 
 ## Licensing
 
