@@ -1,4 +1,4 @@
-server iii_radius {
+server radiii {
 	
 listen {
 	type = auth
