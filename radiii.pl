@@ -1,10 +1,11 @@
 #########################################################################################
-# iii_connector.pl
-# A small Perl program that connects a FreeRADIUS server to the III Millennium PatronAPI.
+# radiii.pl
+# A small FreeRADIUS perl module that allows patron auth against the 
+# III Sierra PatronAPI.
 #
 # --
 #
-# Copyright (c) 2011, Chris Wells <chris@recklesswells.com>
+# Copyright (c) 2018, Chris Wells <chris@wells.io>
 # All rights reserved. 
 #
 # Redistribution and use in source and binary forms, with or without 
