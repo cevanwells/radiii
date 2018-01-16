@@ -1,10 +1,6 @@
-![Logo of the project](https://raw.githubusercontent.com/jehna/readme-best-practices/master/sample-logo.png)
+# RADIII
 
-# Name of the project
-> Additional information or tagline
-
-A brief description of your project, what it is used for and how does life get
-awesome when someone starts to use it.
+A small FreeRADIUS perl module that allows patron auth against the III Sierra PatronAPI.
 
 ## Installing / Getting started
 
@@ -105,8 +101,4 @@ consideration, it is common to separate this section to its own file called
 
 ## Licensing
 
-One really important part: Give your project a proper license. Here you should
-state what the license is and how to find the text version of the license.
-Something like:
-
-"The code in this project is licensed under MIT license."
+The code in this project is licensed under BSD-3 license. For more information, please see the LICENSE file.
