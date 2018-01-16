@@ -42,17 +42,17 @@ use DateTime;
 
 # Timezone
 # Ex: my $TIMEZONE =  "America/Detroit";
-my $TIMEZONE = "";
+my $TIMEZONE = $ENV{'RADIII_TIMEZONE'};
 
 # configuration constants used below
 my $CENTURY = 2000;
 
 # The following should be set to the base URL for your PatronAPI
 # Ex: my $BASEURL = "http://library.thegdl.org:4500";
-my $BASEURL = "";
+my $BASEURL = $ENV{'RADIII_BASEURL'};
 
 # The following is used in the 'authorize' section below
-my $MAX_FINE = 3.99;
+my $MAX_FINE = $ENV{'RADIII_MAX_FINE'};
 
 # Constants used for expected FreeRADIUS responses
 # immediately reject the request
