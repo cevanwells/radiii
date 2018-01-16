@@ -1,0 +1,26 @@
+FROM alpine:3.7
+MAINTAINER Chris Wells <chris@wells.io>
+
+ENV RADIUS_VER=3.0.15-r3 
+
+# install necessary packages
+RUN apk add --no-cache --update \
+	freeradius=${RADIUS_VER} \
+	freeradius-perl=${RADIUS_VER} \
+	openssl \
+	perl \
+	perl-datetime \
+	perl-libwww
+
+# copy any configs and scripts into their proper locations
+COPY config/. /
+
+# configure RADIUS installation
+RUN /usr/sbin/config_radius.sh \
+	&& find /etc/raddb -exec chgrp -h radius {} +
+
+EXPOSE 1812/udp
+
+USER radius
+ENTRYPOINT ["/usr/sbin/radiusd"]
+CMD ["-f"]
