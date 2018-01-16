@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := fresh
 
 build:
-	docker build -t iii_radius .
+	docker build -t radiii .
 
 up:
 	docker-compose up -d
@@ -10,16 +10,16 @@ down:
 	docker-compose down -v
 
 clean:
-	docker rmi iii_radius
+	docker rmi radiii
 	docker volume prune -f
 
 fresh: down clean build up
 
 enter:
-	docker exec -it iiiradius_radiusd_1 /bin/sh
+	docker exec -it radiii_radiusd_1 /bin/sh
 
 logs:
-	docker logs -f iiiradius_radiusd_1
+	docker logs -f radiii_radiusd_1
 
 nuke:
 	docker rm `docker ps -aq`
