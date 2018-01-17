@@ -34,7 +34,7 @@ Once installed, FreeRADIUS will need to be configured appropriately. Some basic 
 
 ### Deploying / Publishing
 
-A Docker image is currently underdevelopment and when finished the Dockerfile will be included in this repository
+A Docker image is currently under development and when finished the Dockerfile will be included in this repository
 
 ## Features
 
