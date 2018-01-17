@@ -11,8 +11,26 @@ services:
       - RADIII_RADIUS_CLIENT_SECRET=testing123
     volumes:
       - raddb:/etc/raddb
+    networks:
+      testnet:
+        ipv4_address: 192.168.127.2
     ports:
       - "1812:1812/udp"
+  radclient:
+    image: alpine
+    command: /bin/sh
+    networks:
+      testnet:
+        ipv4_address: 192.168.127.3
 volumes:
   raddb:
+networks:
+  testnet:
+    driver: bridge
+    enable_ipv6: false
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.127.0/24
+          gateway: 192.168.127.1
 
