@@ -33,6 +33,6 @@ sed -i '/$INCLUDE proxy.conf/s/^/#/g' $RADDB/radiusd.conf
 # abstract this out into an ENV variable for config.
 echo "
 client iii_radius_client {
-	ipaddr		= 172.18.0.0/24
+	ipaddr		= 192.168.127.0/24
 	secret		= testing123
 }" >> $RADDB/clients.conf
