@@ -13,7 +13,8 @@ RUN apk add --no-cache --update \
 	perl-libwww
 
 # copy any configs and scripts into their proper locations
-COPY config/. /
+COPY config /
+COPY docker-entrypoint.sh /usr/local/bin/
 
 # configure RADIUS installation
 RUN /usr/sbin/config_radius.sh \
@@ -22,5 +23,5 @@ RUN /usr/sbin/config_radius.sh \
 EXPOSE 1812/udp
 
 USER radius
-ENTRYPOINT ["/usr/sbin/radiusd"]
-CMD ["-f"]
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["/usr/sbin/radiusd", "-f", "-l", "stdout"]
