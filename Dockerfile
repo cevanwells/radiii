@@ -18,6 +18,7 @@ COPY docker-entrypoint.sh /usr/local/bin/
 
 # configure RADIUS installation
 RUN /usr/sbin/config_radius.sh \
+    && chmod +x /usr/local/bin/docker-entrypoint.sh \
 	&& find /etc/raddb -exec chgrp -h radius {} +
 
 EXPOSE 1812/udp
