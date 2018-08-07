@@ -23,5 +23,5 @@ RUN /usr/sbin/config_radius.sh \
 EXPOSE 1812/udp
 
 USER radius
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 CMD ["/usr/sbin/radiusd", "-f", "-l", "stdout"]
