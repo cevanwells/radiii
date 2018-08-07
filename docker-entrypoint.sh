@@ -3,6 +3,9 @@ set -e
 
 RADDB=/etc/raddb
 
+# clear existing client values
+echo "" > $RADDB/clients.conf
+
 # tack on new RADIUS clients in clients.conf
 n=`printenv | grep -i 'RADIII_CLIENT_IP' | wc -l`
 
@@ -14,7 +17,7 @@ do
         client iii_radius_client-$i {
                 ipaddr          = $(eval echo \$$ip_name)
                 secret          = $(eval echo \$$secret_name)
-        }" > $RADDB/clients.conf
+        }" >> $RADDB/clients.conf
 done
 
 exec "$@"
