@@ -6,8 +6,10 @@ services:
       - RADIII_TIMEZONE=America/Detroit
       - RADIII_BASEURL=http://library.thegdl.org:4500
       - RADIII_MAX_FINE=3.99
-      - RADIII_CLIENT_IP=192.168.128.0/24
-      - RADIII_CLIENT_SECRET=testing123
+      - RADIII_CLIENT_IP1=192.168.128.0/24
+      - RADIII_CLIENT_SECRET1=testing123
+      - RADIII_CLIENT_IP2=192.168.256.0/24
+      - RADIII_CLIENT_SECRET2=testing321
     ports:
       - "1812:1812/udp"
 
